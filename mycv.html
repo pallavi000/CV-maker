@@ -1,0 +1,1841 @@
+</!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <style type="text/css">
+        /*! CSS Used from: https://resumebuild.com/app/static/css/main.49a848ba.css */
+        *,
+        :after,
+        :before {
+            box-sizing: border-box;
+        }
+
+        h1,
+        h2 {
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: .5rem;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: calc(1.375rem + 1.5vw);
+        }
+
+        @media (min-width:1200px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        h2 {
+            font-size: calc(1.325rem + .9vw);
+        }
+
+        @media (min-width:1200px) {
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        ul {
+            padding-left: 2rem;
+        }
+
+        ul {
+            margin-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        a {
+            color: #0d6efd;
+            color: var(--bs-link-color);
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: #0a58ca;
+            color: var(--bs-link-hover-color);
+        }
+
+        svg {
+            vertical-align: middle;
+        }
+
+        button {
+            border-radius: 0;
+        }
+
+        button:focus:not(:focus-visible) {
+            outline: 0;
+        }
+
+        button {
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            margin: 0;
+        }
+
+        button {
+            text-transform: none;
+        }
+
+        [role=button] {
+            cursor: pointer;
+        }
+
+        button {
+            -webkit-appearance: button;
+        }
+
+        ::-moz-focus-inner {
+            border-style: none;
+            padding: 0;
+        }
+
+        .fa-trash-o:before {
+            content: "";
+        }
+
+        .fa-pencil:before {
+            content: "";
+        }
+
+        .fa-arrows:before {
+            content: "";
+        }
+
+        .fa-file-text-o:before {
+            content: "";
+        }
+
+        ul {
+            margin-bottom: 1.8em;
+            margin-top: 0;
+        }
+
+        ul {
+            padding-left: 1.1em;
+        }
+
+        li {
+            margin-bottom: .25em;
+        }
+
+        h1 {
+            font-family: Rubik, sans-serif;
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: .03em;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            margin-top: 0;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-family: Rubik, sans-serif;
+            margin-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+            word-break: break-word;
+        }
+
+        a {
+            transition: all .4s ease;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a,
+        a:hover {
+            color: #2ebe6e;
+        }
+
+        button {
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: transparent;
+            border: 0;
+            color: inherit;
+            margin: 0;
+            padding: 0;
+        }
+
+        .fa {
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            display: inline-block;
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: inherit;
+            text-decoration: none;
+            -webkit-transform: translate(0);
+            transform: translate(0);
+        }
+
+        .btn-green {
+            background-color: #2ebe6e;
+            border-color: #2ebe6e;
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .btn-green:active,
+        .btn-green:focus,
+        .btn-green:hover {
+            background-color: #fff;
+            border-color: #2ebe6e;
+            color: #2ebe6e;
+            outline: 0;
+            text-decoration: none;
+        }
+
+        .resume-wrapper {
+            border: 1px solid #c1c0c5;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width:992px) {
+            .resume-wrapper {
+                background-color: transparent;
+                border: 0;
+                padding: 0;
+            }
+        }
+
+        .resume {
+            background-color: #fff;
+            border-width: 20px;
+            box-shadow: 0 1px 10px rgba(0, 0, 0, .2);
+            height: 100%;
+            padding-bottom: 1em;
+        }
+
+        @media (min-width:992px) {
+            .resume {
+                border-width: 1px;
+            }
+        }
+
+        .resume .info-text {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        .resume-layout {
+            display: block;
+            min-height: 1105.79px;
+        }
+
+        .resume-layout-box .resume__section {
+            margin-bottom: 0.25rem;
+            position: relative;
+        }
+
+        .resume-layout-box .resume__section .resume__content {
+            position: relative;
+            z-index: 99;
+        }
+
+        .resume-layout-box .resume__section:hover .controls-menu,
+        .resume-layout-box .resume__section:hover .resume__controls,
+        .resume-layout-box .resume__section:hover .resume__move {
+            display: block;
+        }
+
+        .resume-layout-box .resume__section .resume__controls {
+            border: 2px solid #2ebe6e;
+            bottom: -10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .25);
+            left: -4rem;
+            position: absolute;
+            right: -4rem;
+            top: -10px;
+            z-index: 10;
+        }
+
+        .resume-layout-box .resume__section .controls-menu {
+            position: absolute;
+            right: 0;
+            right: -4rem;
+            top: -10px;
+            z-index: 999;
+        }
+
+        .resume-layout-box .resume__section .controls-menu button.resume__control-button {
+            position: relative;
+        }
+
+        .resume-layout-box .resume__section .controls-menu button.resume__control-button:not(:last-child):after {
+            border-right: 1px solid hsla(0, 0%, 100%, .65);
+            bottom: 0;
+            content: "";
+            height: calc(100% - 15px);
+            margin: auto;
+            position: absolute;
+            right: -2px;
+            top: 0;
+            z-index: 5;
+        }
+
+        .resume-layout-box .resume__section .resume__move {
+            left: -4rem;
+            position: absolute;
+            top: -8px;
+            width: 35px;
+            z-index: 9999;
+        }
+
+        .resume-layout-box .resume__section .controls-menu,
+        .resume-layout-box .resume__section .resume__controls,
+        .resume-layout-box .resume__section .resume__move {
+            display: none;
+            font-size: 12px;
+        }
+
+        .resume-layout-box .resume__section .controls-menu .btn-green,
+        .resume-layout-box .resume__section .resume__move .btn-green {
+            background-color: #2ebe6e;
+            background-image: none;
+            border: 1px solid transparent;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+            letter-spacing: .01em;
+            padding: 5px 8px;
+            touch-action: manipulation;
+        }
+
+        .resume-layout-box .resume__section .controls-menu .btn-green:active,
+        .resume-layout-box .resume__section .controls-menu .btn-green:focus,
+        .resume-layout-box .resume__section .controls-menu .btn-green:hover,
+        .resume-layout-box .resume__section .resume__move .btn-green:active,
+        .resume-layout-box .resume__section .resume__move .btn-green:focus,
+        .resume-layout-box .resume__section .resume__move .btn-green:hover {
+            background-color: #fff;
+            border-color: #2ebe6e;
+            color: #2ebe6e;
+            outline: 0;
+            text-decoration: none;
+        }
+
+        .resume-layout-box .resume__section .resume__move a.resume__control-button {
+            border-radius: 0;
+            border-width: 2px;
+            left: 0;
+            position: relative;
+            right: -2px;
+            text-transform: inherit;
+            top: -2px;
+            z-index: 4;
+        }
+
+        @media (max-width:767px) {
+            .resume-layout-box .resume__section .resume__controls {
+                left: -2rem;
+                right: -2rem;
+            }
+
+            .resume-layout-box .resume__section .controls-menu {
+                right: -2rem;
+            }
+
+            .resume-layout-box .resume__section .resume__move {
+                left: -2rem;
+            }
+
+            .resume-layout {
+                min-height: inherit;
+            }
+        }
+
+        /*! CSS Used from: https://static.olark.com/jsclient/styles/cryptic-capybara/theme.css */
+        ::-webkit-input-placeholder,
+        :-moz-placeholder,
+        ::-moz-placeholder,
+        :-ms-input-placeholder {
+            font-family: helvetica, arial, sans-serif;
+        }
+
+        /*! CSS Used from: Embedded */
+        .resume {
+            font-size: 13px;
+        }
+
+        .resume-layout {
+            padding: 1em 3em 1em;
+            font-size: 13px;
+            font-weight: normal;
+        }
+
+        @media (max-width: 767px) {
+
+            .resume,
+            .resume-layout {
+                font-size: 5.40918px;
+            }
+        }
+
+        .resume-layout h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .resume-layout .sub-headline {
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .resume-layout .sub-headline h2 {
+            font-weight: bold;
+            margin-bottom: 0px;
+            text-transform: uppercase;
+        }
+
+        .resume-layout .sub-headline .svg-icon {
+            display: none;
+            background: rgb(66, 162, 224);
+            margin-left: -3.25em;
+            margin-right: 20px;
+        }
+
+        .resume-layout .sub-headline .svg-icon svg {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        .resume-layout .personal-info.sub-headline {
+            display: none;
+        }
+
+        .resume-layout .info-item .svg-icon {
+            display: none;
+            color: rgb(66, 162, 224);
+            margin-top: 3px;
+            margin-right: 10px;
+        }
+
+        .resume-layout .info-item {
+            display: flex;
+            margin-bottom: 5px;
+        }
+
+        .resume-layout .info-item .info-label {
+            width: 12%;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .resume-layout .info-item .info-text {
+            width: 88%;
+        }
+
+        .resume-layout .resume__summary ul {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+
+        .resume-layout .resume__summary ul li {
+            margin-bottom: 5px;
+        }
+
+        .resume-layout .xp-item {
+            overflow: hidden;
+            margin-bottom: 1.6em;
+            display: flex;
+        }
+
+        .resume-layout .xp-item .xp-date {
+            width: 30%;
+            font-weight: bold;
+            text-align: right;
+            padding-right: 1.6em;
+            min-height: 1px;
+        }
+
+        .resume-layout .xp-item .xp-date .xp-city {
+            display: block;
+        }
+
+        .resume-layout .xp-item .xp-job {
+            width: 70%;
+            border-width: 0px 0px 0px 1px;
+            border-top-style: initial;
+            border-right-style: initial;
+            border-bottom-style: initial;
+            border-top-color: initial;
+            border-right-color: initial;
+            border-bottom-color: initial;
+            border-image: initial;
+            border-left-style: solid;
+            border-left-color: lightgrey;
+            padding-left: 1.5rem;
+        }
+
+        .resume-layout .xp-item .xp-job .xp-detail {
+            margin-top: 5px;
+            line-height: 1.6;
+        }
+
+        .resume-layout .xp-item .xp-job .xp-detail ul {
+            margin: 0px;
+        }
+
+        .resume-layout .wrap {
+            display: flex;
+        }
+
+        .resume-layout .wrap .left-col {
+            width: 50%;
+        }
+
+        .resume-layout .extra {
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+            margin-bottom: 1em;
+        }
+
+        .resume-layout .extra .extra-details {
+            position: relative;
+            text-align: left;
+            font-style: italic;
+            margin-left: auto;
+            padding-right: 20px;
+        }
+
+        .resume-layout .extra .extra-details .progress-starts {
+            display: block;
+        }
+
+        .resume-layout .extra .extra-details .progress-circle {
+            display: none;
+        }
+
+        .resume-layout .extra .extra-details .progress-circle .extra-details__bg {
+            min-height: 22px;
+        }
+
+        .resume-layout .extra .extra-details .progress-circle .extra-details__bg>span {
+            background-color: rgb(225, 225, 225);
+            display: block;
+            float: left;
+            width: 1.5em;
+            height: 1.5em;
+            margin-right: 0.54em;
+            border-radius: 50%;
+        }
+
+        .resume-layout .extra .extra-details .progress-circle .extra-details__bg>span.active {
+            background-color: rgb(66, 162, 224);
+        }
+
+        .resume-layout .extra .extra-details .progress-line {
+            display: none;
+            margin-top: 1em;
+            background-color: rgb(209, 217, 225);
+            width: 100%;
+            height: 5px;
+            position: relative;
+            margin-bottom: 5px;
+        }
+
+        .resume-layout .extra .extra-details .progress-line .extra-details__progress {
+            background-color: rgb(246, 137, 49);
+            height: 5px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+        }
+
+        .resume-layout .resume-body {
+            display: flex;
+        }
+
+        .resume-layout .resume-body h1 {
+            font-size: 2rem;
+        }
+
+        .resume-layout .resume-body .resume-aside {
+            width: 33%;
+            margin-right: 15px;
+            padding-top: 1rem;
+        }
+
+        .resume-layout .resume-body .resume-main {
+            width: 77%;
+            padding-top: 2rem;
+        }
+
+        .resume-layout .resume-body .resume__section button.resume__control-button:not(:last-child)::after {
+            display: none;
+        }
+
+        .resume-layout .resume-body .resume__section .resume__controls,
+        .resume-layout .resume-body .resume__section .resume__move {
+            left: -10px;
+            right: -10px;
+        }
+
+        .resume-layout .resume-body .resume__section .controls-menu {
+            top: -10px;
+            right: -8px;
+        }
+
+        .resume-layout .resume-body .resume__section .controls-menu {
+            width: 33px;
+        }
+
+        .resume-layout .resume-body .resume__section .controls-menu .resume__control-text {
+            display: none;
+        }
+
+        .resume-layout .resume__experience .exp-show {
+            display: block;
+        }
+
+        .resume-layout .resume__experience .exp-hide {
+            display: none;
+        }
+
+        .resume-layout .resume__education .edu-show {
+            display: block;
+        }
+
+        .resume-layout .resume__education .edu-hide {
+            display: none;
+        }
+
+        .resume-layout .txt-bold {
+            font-weight: bold !important;
+        }
+
+        .resume-layout-box .resume__section .resume__controls {
+            min-height: 103px;
+        }
+
+        .resume-layout-box .resume-main .resume__section {
+            padding-left: 2.25em;
+        }
+
+        @media all {
+            .resume-layout-box .resume__section .controls-menu .btn-green {
+                text-align: center;
+                font-size: 1.4rem;
+                font-weight: normal;
+                padding: 5px 10px;
+                font-family: Rubik, sans-serif;
+            }
+
+            .resume-layout-box .resume__section:hover .resume__controls,
+            .resume-layout-box .resume__section:hover .controls-menu,
+            .resume-layout-box .resume__section:hover .resume__move {
+                display: none;
+            }
+
+            .resume-layout-box .resume__section:hover .resume__controls,
+            .resume-layout-box .resume__section:hover .controls-menu,
+            .resume-layout-box .resume__section:hover .resume__move {
+                display: block;
+            }
+
+            .resume-layout-box .resume__section .resume__controls,
+            .resume-layout-box .resume__section .controls-menu,
+            .resume-layout-box .resume__section .resume__move {
+                display: none;
+                font-size: 12px;
+            }
+
+            .resume-layout .resume-body .resume__section .controls-menu .resume__control-text {
+                display: none;
+            }
+
+            .resume__control-button {
+                display: none;
+            }
+        }
+
+        .resume-layout.cv15 {
+            font-weight: normal;
+            font-family: "Roboto TTF", sans-serif;
+        }
+
+        .resume-layout.cv15 .resume-main .resume__section {
+            padding-left: 0px;
+        }
+
+        .resume-layout.cv15 .resume__heading {
+            font-weight: 300;
+        }
+
+        .resume-layout.cv15 h1 {
+            font-size: 2.86em;
+            padding-top: 0.5rem;
+            text-transform: capitalize;
+            font-weight: bold;
+            font-family: "Roboto TTF", sans-serif;
+        }
+
+        .resume-layout.cv15 h2 {
+            font-size: 1.43em;
+            line-height: 1;
+            margin-bottom: 0px;
+            font-family: "Roboto TTF", sans-serif;
+        }
+
+        .resume-layout.cv15 .resume-header .info-main {
+            display: grid;
+        }
+
+        .resume-layout.cv15 .resume-header .info-main .info-item:first-child {
+            order: 3;
+        }
+
+        .resume-layout.cv15 .resume-header .info-main .info-item:nth-child(2) {
+            order: 2;
+        }
+
+        .resume-layout.cv15 .resume-header .info-main .info-item:last-child {
+            order: 1;
+        }
+
+        .resume-layout.cv15 .resume__summary ul {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+
+        .resume-layout.cv15 .resume__experience .exp-show {
+            display: none;
+        }
+
+        .resume-layout.cv15 .resume__experience .exp-hide {
+            display: block;
+        }
+
+        .resume-layout.cv15 .resume__education .edu-show {
+            display: none;
+        }
+
+        .resume-layout.cv15 .resume__education .edu-hide {
+            display: block;
+        }
+
+        .resume-layout.cv15 .resume-aside {
+            order: 2;
+            width: 25%;
+            margin-right: 15px;
+            padding-top: 1rem;
+        }
+
+        .resume-layout.cv15 .resume-main {
+            order: 1;
+            width: 75%;
+            padding-top: 1rem;
+            padding-right: 5rem;
+        }
+
+        .resume-layout.cv15 .resume-aside .resume__heading {
+            display: none;
+        }
+
+        .resume-layout.cv15 .sub-headline {
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-layout.cv15 .sub-headline h2 {
+            display: inline-block;
+            text-transform: capitalize;
+        }
+
+        .resume-layout.cv15 .sub-headline .svg-icon {
+            display: block;
+            margin-right: 10px;
+        }
+
+        .resume-layout.cv15 .sub-headline .svg-icon {
+            background-color: rgb(66, 162, 224);
+            border: 4px solid rgb(161, 209, 240);
+            border-radius: 100%;
+            color: rgb(255, 239, 227);
+            height: 2em;
+            width: 2em;
+            line-height: normal;
+            text-align: center;
+            margin-left: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .resume-layout.cv15 .sub-headline .svg-icon svg {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .resume-layout.cv15 .info-item {
+            display: block;
+        }
+
+        .resume-layout.cv15 .info-item .svg-icon,
+        .resume-layout.cv15 .info-item .info-text {
+            display: inline-block;
+        }
+
+        .resume-layout.cv15 .info-item .info-label {
+            display: none;
+        }
+
+        .resume-layout.cv15 .wrap .left-col,
+        .resume-layout.cv15 .wrap .extra-info,
+        .resume-layout.cv15 .wrap .extra-details {
+            width: 100%;
+            display: block;
+            padding: 0px;
+        }
+
+        .resume-layout.cv15 .extra {
+            display: block;
+        }
+
+        .resume-layout.cv15 .extra .extra-details .progress-starts,
+        .resume-layout.cv15 .extra .extra-details .progress-circle {
+            display: none;
+        }
+
+        .resume-layout.cv15 .extra .extra-details .progress-line {
+            display: block;
+        }
+
+        .resume-layout.cv15 .extra .extra-details .progress-line .extra-details__progress {
+            background-color: rgb(66, 162, 224);
+        }
+
+        .resume-layout.cv15 .xp-item {
+            display: block;
+        }
+
+        .resume-layout.cv15 .xp-item .xp-date,
+        .resume-layout.cv15 .xp-item .xp-job {
+            width: 100%;
+            text-align: left;
+            font-weight: normal;
+            padding: 0px;
+        }
+
+        .resume-layout.cv15 .xp-item .xp-job {
+            border-left: 0px;
+        }
+
+        .resume-layout.cv15 .xp-item .xp-date {
+            color: rgb(66, 162, 224);
+        }
+
+        @media (max-width: 767px) {
+            .resume-layout.cv15 .sub-headline .svg-icon svg {
+                width: 0.75rem;
+                height: 0.75rem;
+                margin-left: -4px;
+                margin-top: -6px;
+            }
+        }
+
+        /*! CSS Used from: Embedded */
+        [data-rbd-drag-handle-context-id="26"] {
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            touch-action: manipulation;
+        }
+
+        [data-rbd-droppable-context-id="26"] {
+            overflow-anchor: none;
+        }
+
+        /*! CSS Used from: Embedded */
+        [data-rbd-drag-handle-context-id="26"] {
+            cursor: -webkit-grab;
+            cursor: grab;
+        }
+
+        /*! CSS Used from: Embedded */
+        [data-rbd-drag-handle-context-id="27"] {
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            touch-action: manipulation;
+        }
+
+        [data-rbd-droppable-context-id="27"] {
+            overflow-anchor: none;
+        }
+
+        /*! CSS Used from: Embedded */
+        [data-rbd-drag-handle-context-id="27"] {
+            cursor: -webkit-grab;
+            cursor: grab;
+        }
+
+        /*! CSS Used fontfaces */
+        @font-face {
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/rubik/v21/iJWKBXyIfDnIV7nMrXyi0A.woff2) format('woff2');
+            unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+        }
+
+        @font-face {
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/rubik/v21/iJWKBXyIfDnIV7nFrXyi0A.woff2) format('woff2');
+            unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+        }
+
+        @font-face {
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/rubik/v21/iJWKBXyIfDnIV7nDrXyi0A.woff2) format('woff2');
+            unicode-range: U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+        }
+
+        @font-face {
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/rubik/v21/iJWKBXyIfDnIV7nPrXyi0A.woff2) format('woff2');
+            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+
+        @font-face {
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: 300;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/rubik/v21/iJWKBXyIfDnIV7nBrXw.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
+        @font-face {
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/rubik/v21/iJWKBXyIfDnIV7nMrXyi0A.woff2) format('woff2');
+            unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+        }
+
+        @font-face {
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/rubik/v21/iJWKBXyIfDnIV7nFrXyi0A.woff2) format('woff2');
+            unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+        }
+
+        @font-face {
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/rubik/v21/iJWKBXyIfDnIV7nDrXyi0A.woff2) format('woff2');
+            unicode-range: U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+        }
+
+        @font-face {
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/rubik/v21/iJWKBXyIfDnIV7nPrXyi0A.woff2) format('woff2');
+            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+
+        @font-face {
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/rubik/v21/iJWKBXyIfDnIV7nBrXw.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
+        @font-face {
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/rubik/v21/iJWKBXyIfDnIV7nMrXyi0A.woff2) format('woff2');
+            unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+        }
+
+        @font-face {
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/rubik/v21/iJWKBXyIfDnIV7nFrXyi0A.woff2) format('woff2');
+            unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+        }
+
+        @font-face {
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/rubik/v21/iJWKBXyIfDnIV7nDrXyi0A.woff2) format('woff2');
+            unicode-range: U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+        }
+
+        @font-face {
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/rubik/v21/iJWKBXyIfDnIV7nPrXyi0A.woff2) format('woff2');
+            unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+
+        @font-face {
+            font-family: 'Rubik';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/rubik/v21/iJWKBXyIfDnIV7nBrXw.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
+        @font-face {
+            font-family: Rubik;
+            font-weight: 400;
+            src: url("Rubik-Regular.ttf");
+        }
+
+        @font-face {
+            font-family: Rubik;
+            font-weight: 500;
+            src: url(https://resumebuild.com/app/static/media/Rubik-Medium.2263cf4bbb29e585de1b.ttf) format("truetype");
+        }
+
+        @font-face {
+            font-family: Rubik;
+            font-weight: 600;
+            src: url(https://resumebuild.com/app/static/media/Rubik-SemiBold.779458cb27a611de7b87.ttf) format("truetype");
+        }
+
+        @font-face {
+            font-family: FontAwesome;
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://cdn.resumebuild.com/assets/font-awesome/fontawesome-webfont-cbb644d0ee730ea57dd5fbae35ef5ba4a41d57a254a6b1215de5c9ff8a321c2d.eot);
+            src: url(https://cdn.resumebuild.com/assets/font-awesome/fontawesome-webfont-cbb644d0ee730ea57dd5fbae35ef5ba4a41d57a254a6b1215de5c9ff8a321c2d.eot?#iefix) format("embedded-opentype"), url(https://cdn.resumebuild.com/assets/font-awesome/fontawesome-webfont-aadc3580d2b64ff5a7e6f1425587db4e8b033efcbf8f5c332ca52a5ed580c87c.woff2) format("woff2"), url(https://cdn.resumebuild.com/assets/font-awesome/fontawesome-webfont-e3870de89716b72cb61a4bba0e17c75783b361cdaba35ea96961c3070bd8ca18.woff) format("woff"), url(https://cdn.resumebuild.com/assets/font-awesome/fontawesome-webfont-9e540a087924a6e64790149d735cac022640e4fa6bff6bd65f5e9f41529bf0b3.ttf) format("truetype"), url(https://cdn.resumebuild.com/assets/font-awesome/fontawesome-webfont-bfdef833219a6edffd9c3cbc28db72739d22bb4d20cc2e2f8d56a7a4d408a206.svg#fontawesomeregular) format("svg");
+        }
+
+        @font-face {
+            font-family: "Roboto TTF";
+            font-weight: 300;
+            src: url("Roboto-Light.ttf");
+        }
+
+        @font-face {
+            font-family: "Roboto TTF";
+            font-weight: 500;
+            src: url("roboto-regular.ttf");
+        }
+
+
+        @font-face {
+            font-family: "Roboto TTF";
+            font-weight: 500;
+            src: url("Roboto-Medium.ttf");
+        }
+
+        @font-face {
+            font-family: "Roboto TTF";
+            font-weight: 600;
+            src: url("Roboto-Bold.ttf");
+        }
+
+        @font-face {
+            font-family: "Roboto TTF";
+            font-weight: 900;
+            src: url("Roboto-Black.ttf")
+        }
+
+        body {
+            margin: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+
+
+
+    <div class="resume-wrapper" id="resume-wrapper">
+        <div class="resume" style="box-shadow: none;">
+            <div class="resume-layout cv15 tripple left">
+                <div class="tripple-column resume-layout-box">
+                    <div class="resume-header">
+                        <div class="resume__section resume__heading resume__contact">
+
+                            <div class="resume__content ">
+                                <h1 class="info-headline">Bishnu bhattarai</h1>
+                                <div class="personal-info sub-headline">
+                                    <h2>Personal Info</h2>
+                                </div>
+                                <div class="info-main">
+                                    <div class="info-item"><span class="info-label">Phone:</span><span
+                                            class="info-text"><i class="svg-icon"><svg
+                                                    xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                                    aria-hidden="true" data-height="1em" data-icon="fa:phone"
+                                                    data-inline="false" data-width="1em" transform="rotate(360)"
+                                                    viewBox="0 0 1408 1408">
+                                                    <path fill="currentColor"
+                                                        d="M1408 1112q0 27-10 70.5t-21 68.5q-21 50-122 106-94 51-186 51-27 0-53-3.5t-57.5-12.5-47-14.5T856 1357t-49-18q-98-35-175-83-127-79-264-216T152 776q-48-77-83-175-3-9-18-49t-20.5-55.5-14.5-47T3.5 392 0 339q0-92 51-186Q107 52 157 31q25-11 68.5-21T296 0q14 0 21 3 18 6 53 76 11 19 30 54t35 63.5 31 53.5q3 4 17.5 25t21.5 35.5 7 28.5q0 20-28.5 50t-62 55-62 53-28.5 46q0 9 5 22.5t8.5 20.5 14 24 11.5 19q76 137 174 235t235 174q2 1 19 11.5t24 14 20.5 8.5 22.5 5q18 0 46-28.5t53-62 55-62 50-28.5q14 0 28.5 7t35.5 21.5 25 17.5q25 15 53.5 31t63.5 35 54 30q70 35 76 53 3 7 3 21z">
+                                                    </path>
+                                                </svg></i><span class="info-text">+358-469679815
+                                            </span></span></div>
+                                    <div class="info-item"><span class="info-label">Email:</span><span
+                                            class="info-text"><i class="svg-icon"><svg
+                                                    xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                                    aria-hidden="true" data-height="1em" data-icon="fa:envelope"
+                                                    data-inline="false" data-width="1em" transform="rotate(360)"
+                                                    viewBox="0 0 1792 1408">
+                                                    <path fill="currentColor"
+                                                        d="M1792 454v794q0 66-47 113t-113 47H160q-66 0-113-47T0 1248V454q44 49 101 87 362 246 497 345 57 42 92.5 65.5t94.5 48 110 24.5h2q51 0 110-24.5t94.5-48T1194 886q170-123 498-345 57-39 100-87zm0-294q0 79-49 151t-122 123q-376 261-468 325-10 7-42.5 30.5t-54 38-52 32.5-57.5 27-50 9h-2q-23 0-50-9t-57.5-27-52-32.5-54-38T639 759q-91-64-262-182.5T172 434q-62-42-117-115.5T0 182q0-78 41.5-130T160 0h1472q65 0 112.5 47t47.5 113z">
+                                                    </path>
+                                                </svg></i><span
+                                                class="info-text">bhattaraipallavi4@gmail.com</span></span></div>
+
+                                    <div class="info-item"><span class="info-label">Address:</span><span
+                                            class="info-text"><i class="svg-icon"><svg
+                                                    xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                                    aria-hidden="true" data-height="1em" data-icon="fa:location-arrow"
+                                                    data-inline="false" data-width="1em" transform="rotate(360)"
+                                                    viewBox="0 0 1408 1408">
+                                                    <path fill="currentColor"
+                                                        d="M1401 93L761 1373q-17 35-57 35-5 0-15-2-22-5-35.5-22.5T640 1344V768H64q-22 0-39.5-13.5T2 719t4-42 29-30L1315 7q13-7 29-7 27 0 45 19 15 14 18.5 34.5T1401 93z">
+                                                    </path>
+                                                </svg></i><span class="info-text">Väritehtaankatu 2A 22,01300, vantaa
+                                            </span></span></div>
+
+
+                                </div>
+
+
+
+                                <div class="info-item"><span class="info-label">LinkedIn:</span><span
+                                        class="info-text"><i class="fa-brands fa-linkedin" style="color: #42a2e0;
+                                        font-size: 20px;
+                                        margin-right: 10px;"></i><a
+                                            href="https://www.linkedin.com/in/bishnu-bhattarai-455311161/"
+                                            class="info-text text-decoration-none" target="_blank"
+                                            style="color: #212529;">https://www.linkedin.com/in/bishnu-bhattarai-455311161/
+                                        </a></span></div>
+
+
+                                <div class="info-item"><span class="info-label">Github:</span><span class="info-text"><i
+                                            class="fa-brands fa-github icon-git" style="color: #42a2e0;
+                                            font-size: 20px;
+                                            margin-right: 10px;"></i><a href="https://github.com/pallavi000"
+                                            class="info-text text-decoration-none" target="_blank"
+                                            style="color: #212529;">https://github.com/pallavi000
+                                        </a></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="resume-body">
+                    <div class="resume-aside" data-rbd-droppable-id="charactersTrippleAside"
+                        data-rbd-droppable-context-id="101">
+                        <div data-rbd-draggable-context-id="101" data-rbd-draggable-id="HEAD0">
+                            <div class="resume__section resume__heading resume__contact">
+
+                                <div class="resume__content ">
+                                    <h1 class="info-headline">bishnu bhattarai</h1>
+                                    <div class="personal-info sub-headline">
+                                        <h2>Personal Info</h2>
+                                    </div>
+                                    <div class="info-main">
+                                        <div class="info-item"><span class="info-label">Phone:</span><span
+                                                class="info-text"><i class="svg-icon"><svg
+                                                        xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                                        aria-hidden="true" data-height="1em" data-icon="fa:phone"
+                                                        data-inline="false" data-width="1em" transform="rotate(360)"
+                                                        viewBox="0 0 1408 1408">
+                                                        <path fill="currentColor"
+                                                            d="M1408 1112q0 27-10 70.5t-21 68.5q-21 50-122 106-94 51-186 51-27 0-53-3.5t-57.5-12.5-47-14.5T856 1357t-49-18q-98-35-175-83-127-79-264-216T152 776q-48-77-83-175-3-9-18-49t-20.5-55.5-14.5-47T3.5 392 0 339q0-92 51-186Q107 52 157 31q25-11 68.5-21T296 0q14 0 21 3 18 6 53 76 11 19 30 54t35 63.5 31 53.5q3 4 17.5 25t21.5 35.5 7 28.5q0 20-28.5 50t-62 55-62 53-28.5 46q0 9 5 22.5t8.5 20.5 14 24 11.5 19q76 137 174 235t235 174q2 1 19 11.5t24 14 20.5 8.5 22.5 5q18 0 46-28.5t53-62 55-62 50-28.5q14 0 28.5 7t35.5 21.5 25 17.5q25 15 53.5 31t63.5 35 54 30q70 35 76 53 3 7 3 21z">
+                                                        </path>
+                                                    </svg></i><span class="info-text">+358-469679815 </span></span>
+                                        </div>
+                                        <div class="info-item"><span class="info-label">Email:</span><span
+                                                class="info-text"><i class="svg-icon"><svg
+                                                        xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                                        aria-hidden="true" data-height="1em" data-icon="fa:envelope"
+                                                        data-inline="false" data-width="1em" transform="rotate(360)"
+                                                        viewBox="0 0 1792 1408">
+                                                        <path fill="currentColor"
+                                                            d="M1792 454v794q0 66-47 113t-113 47H160q-66 0-113-47T0 1248V454q44 49 101 87 362 246 497 345 57 42 92.5 65.5t94.5 48 110 24.5h2q51 0 110-24.5t94.5-48T1194 886q170-123 498-345 57-39 100-87zm0-294q0 79-49 151t-122 123q-376 261-468 325-10 7-42.5 30.5t-54 38-52 32.5-57.5 27-50 9h-2q-23 0-50-9t-57.5-27-52-32.5-54-38T639 759q-91-64-262-182.5T172 434q-62-42-117-115.5T0 182q0-78 41.5-130T160 0h1472q65 0 112.5 47t47.5 113z">
+                                                        </path>
+                                                    </svg></i><span
+                                                    class="info-text">bhattaraipallavi4@gmail.com</span></span>
+                                        </div>
+                                        <div class="info-item"><span class="info-label">Address:</span><span
+                                                class="info-text"><i class="svg-icon"><svg
+                                                        xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                                        aria-hidden="true" data-height="1em"
+                                                        data-icon="fa:location-arrow" data-inline="false"
+                                                        data-width="1em" transform="rotate(360)"
+                                                        viewBox="0 0 1408 1408">
+                                                        <path fill="currentColor"
+                                                            d="M1401 93L761 1373q-17 35-57 35-5 0-15-2-22-5-35.5-22.5T640 1344V768H64q-22 0-39.5-13.5T2 719t4-42 29-30L1315 7q13-7 29-7 27 0 45 19 15 14 18.5 34.5T1401 93z">
+                                                        </path>
+                                                    </svg></i><span class="info-text">Chitwan , Kathmandu
+
+                                                </span></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-rbd-draggable-context-id="101" data-rbd-draggable-id="SKLS1">
+                            <div class="resume__section resume__skills">
+
+                                <div class="resume__content">
+                                    <div class="sub-headline"><i class="svg-icon"><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                                aria-hidden="true" class="iconify icon:fa:book" data-height="1em"
+                                                data-icon="fa:book" data-inline="false" data-width="1em"
+                                                transform="rotate(360)" viewBox="0 0 1696 1536">
+                                                <path fill="currentColor"
+                                                    d="M1671 350q40 57 18 129l-275 906q-19 64-76.5 107.5T1215 1536H292q-77 0-148.5-53.5T44 1351q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5T84 1051q23-38 45-91.5t30-91.5q3-10 .5-30t-.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5T372 283q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32T504.5 12t36-11.5T588 6l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5T1057 1280H188q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zm-1064 2q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5T1279 352l21-64q4-13-2-22.5t-20-9.5H670q-13 0-25.5 9.5T628 288zm-83 256q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5T1196 608l21-64q4-13-2-22.5t-20-9.5H587q-13 0-25.5 9.5T545 544z">
+                                                </path>
+                                            </svg></i>
+                                        <h2>Skills</h2>
+                                    </div>
+                                    <div class="resume__text">
+                                        <div class="wrap">
+                                            <div class="left-col">
+                                                <div class="extra">
+                                                    <div class="extra-info">HTML</div>
+                                                    <div class="extra-details">
+                                                        <div class="progress-starts">Expert</div>
+                                                        <div class="progress-circle">
+                                                            <div class="extra-details__bg"><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span class="active"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="progress-line">
+                                                            <div class="extra-details__progress" style="width: 100%;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wrap">
+                                            <div class="left-col">
+                                                <div class="extra">
+                                                    <div class="extra-info">CSS</div>
+                                                    <div class="extra-details">
+                                                        <div class="progress-starts">Expert</div>
+                                                        <div class="progress-circle">
+                                                            <div class="extra-details__bg"><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span class="active"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="progress-line">
+                                                            <div class="extra-details__progress" style="width: 100%;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wrap">
+                                            <div class="left-col">
+                                                <div class="extra">
+                                                    <div class="extra-info">JavaScript</div>
+                                                    <div class="extra-details">
+                                                        <div class="progress-starts">Experienced</div>
+                                                        <div class="progress-circle">
+                                                            <div class="extra-details__bg"><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span></span></div>
+                                                        </div>
+                                                        <div class="progress-line">
+                                                            <div class="extra-details__progress" style="width: 80%;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wrap">
+                                            <div class="left-col">
+                                                <div class="extra">
+                                                    <div class="extra-info">Laravel</div>
+                                                    <div class="extra-details">
+                                                        <div class="progress-starts">Experienced</div>
+                                                        <div class="progress-circle">
+                                                            <div class="extra-details__bg"><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span></span></div>
+                                                        </div>
+                                                        <div class="progress-line">
+                                                            <div class="extra-details__progress" style="width: 80%;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wrap">
+                                            <div class="left-col">
+                                                <div class="extra">
+                                                    <div class="extra-info">React js</div>
+                                                    <div class="extra-details">
+                                                        <div class="progress-starts">Experienced</div>
+                                                        <div class="progress-circle">
+                                                            <div class="extra-details__bg"><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span></span></div>
+                                                        </div>
+                                                        <div class="progress-line">
+                                                            <div class="extra-details__progress" style="width: 80%;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wrap">
+                                            <div class="left-col">
+                                                <div class="extra">
+                                                    <div class="extra-info">Next js</div>
+                                                    <div class="extra-details">
+                                                        <div class="progress-starts">Experienced</div>
+                                                        <div class="progress-circle">
+                                                            <div class="extra-details__bg"><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span></span></div>
+                                                        </div>
+                                                        <div class="progress-line">
+                                                            <div class="extra-details__progress" style="width: 80%;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wrap">
+                                            <div class="left-col">
+                                                <div class="extra">
+                                                    <div class="extra-info">Node js</div>
+                                                    <div class="extra-details">
+                                                        <div class="progress-starts">Skillful</div>
+                                                        <div class="progress-circle">
+                                                            <div class="extra-details__bg"><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span></span><span></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="progress-line">
+                                                            <div class="extra-details__progress" style="width: 60%;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wrap">
+                                            <div class="left-col">
+                                                <div class="extra">
+                                                    <div class="extra-info">React Native</div>
+                                                    <div class="extra-details">
+                                                        <div class="progress-starts">Skillful</div>
+                                                        <div class="progress-circle">
+                                                            <div class="extra-details__bg"><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span></span><span></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="progress-line">
+                                                            <div class="extra-details__progress" style="width: 60%;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wrap">
+                                            <div class="left-col">
+                                                <div class="extra">
+                                                    <div class="extra-info">Jest</div>
+                                                    <div class="extra-details">
+                                                        <div class="progress-starts">Skillful</div>
+                                                        <div class="progress-circle">
+                                                            <div class="extra-details__bg"><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span></span><span></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="progress-line">
+                                                            <div class="extra-details__progress" style="width: 60%;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wrap">
+                                            <div class="left-col">
+                                                <div class="extra">
+                                                    <div class="extra-info">Typescript</div>
+                                                    <div class="extra-details">
+                                                        <div class="progress-starts">Skillful</div>
+                                                        <div class="progress-circle">
+                                                            <div class="extra-details__bg"><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span></span><span></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="progress-line">
+                                                            <div class="extra-details__progress" style="width: 60%;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wrap">
+                                            <div class="left-col">
+                                                <div class="extra">
+                                                    <div class="extra-info">Git</div>
+                                                    <div class="extra-details">
+                                                        <div class="progress-starts">Experienced</div>
+                                                        <div class="progress-circle">
+                                                            <div class="extra-details__bg"><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span></span></div>
+                                                        </div>
+                                                        <div class="progress-line">
+                                                            <div class="extra-details__progress" style="width: 80%;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wrap">
+                                            <div class="left-col">
+                                                <div class="extra">
+                                                    <div class="extra-info">MySQL</div>
+                                                    <div class="extra-details">
+                                                        <div class="progress-starts">Experienced</div>
+                                                        <div class="progress-circle">
+                                                            <div class="extra-details__bg"><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span></span></div>
+                                                        </div>
+                                                        <div class="progress-line">
+                                                            <div class="extra-details__progress" style="width: 80%;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wrap">
+                                            <div class="left-col">
+                                                <div class="extra">
+                                                    <div class="extra-info">MongoDB</div>
+                                                    <div class="extra-details">
+                                                        <div class="progress-starts">Experienced</div>
+                                                        <div class="progress-circle">
+                                                            <div class="extra-details__bg"><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span
+                                                                    class="active"></span><span></span></div>
+                                                        </div>
+                                                        <div class="progress-line">
+                                                            <div class="extra-details__progress" style="width: 80%;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="resume-main" data-rbd-droppable-id="charactersTrippleMain"
+                        data-rbd-droppable-context-id="102">
+                        <div data-rbd-draggable-context-id="102" data-rbd-draggable-id="SUMM0">
+                            <div class="resume__section resume__summary">
+
+                                <div class="resume__content">
+                                    <div class="sub-headline"><i class="svg-icon"><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                                aria-hidden="true" transform="rotate(360)" viewBox="0 0 1792 1408">
+                                                <path fill="currentColor"
+                                                    d="M888 1056l116-116-152-152-116 116v56h96v96h56zm440-720q-16-16-33 1L945 687q-17 17-1 33t33-1l350-350q17-17 1-33zm80 594v190q0 119-84.5 203.5T1120 1408H288q-119 0-203.5-84.5T0 1120V288Q0 169 84.5 84.5T288 0h832q63 0 117 25 15 7 18 23 3 17-9 29l-49 49q-14 14-32 8-23-6-45-6H288q-66 0-113 47t-47 113v832q0 66 47 113t113 47h832q66 0 113-47t47-113V994q0-13 9-22l64-64q15-15 35-7t20 29zm-96-738l288 288-672 672H640V864zm444 132l-92 92-288-288 92-92q28-28 68-28t68 28l152 152q28 28 28 68t-28 68z">
+                                                </path>
+                                            </svg></i>
+                                        <h2>Professional Summary</h2>
+                                    </div>
+                                    <div class="other">
+                                        <div class="other-info">
+                                            <ul>
+                                                <li>Skilled Web Developer with 3+ years of hands-on experience
+                                                    building,testing,optimizing,web-based applications for diverse
+                                                    industry organizations.
+                                                    Knowledgeable in identifying core technical problem.Capable of
+                                                    visualizing goals,prioritizing them based on importance and
+                                                    conquering them together with the team. Driven individual with
+                                                    the ability to adopt any situation and proven potential to grow
+                                                    self and others.
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div data-rbd-draggable-context-id="102" data-rbd-draggable-id="EXPR1">
+                            <div class="resume__section resume__experience">
+
+                                <div class="resume__content">
+                                    <div class="sub-headline"><i class="svg-icon"><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                                aria-hidden="true" transform="rotate(360)" viewBox="0 0 1792 1536">
+                                                <path fill="currentColor"
+                                                    d="M640 256h512V128H640v128zm1152 640v480q0 66-47 113t-113 47H160q-66 0-113-47T0 1376V896h672v160q0 26 19 45t45 19h320q26 0 45-19t19-45V896h672zm-768 0v128H768V896h256zm768-480v384H0V416q0-66 47-113t113-47h352V96q0-40 28-68t68-28h576q40 0 68 28t28 68v160h352q66 0 113 47t47 113z">
+                                                </path>
+                                            </svg></i>
+                                        <h2>Employment History</h2>
+                                    </div>
+                                    <div class="xp-item">
+                                        <div class="exp-hide txt-bold">Frontend Developer, Intelezy software
+                                            Pvt.Ltd.
+                                            Nepal</div>
+                                        <div class="xp-date">Oct. 2022 – Jan. 2023<div class="xp-city exp-show">
+                                                Nepal </div>
+                                        </div>
+                                        <div class="xp-job"><span class="exp-show">Frontend Developer, Intelezy
+                                                software Pvt.Ltd.
+                                                Nepal</span>
+                                            <div class="xp-detail">
+                                                <div>
+                                                    <ul>
+                                                        <li>. Work as a frontend developer for a Inventory
+                                                            Management
+                                                            system that service more than a thousand users.
+                                                        </li>
+                                                        <li> Collaborate with team member to find the solution to
+                                                            existing
+                                                            problem and implement them.</li>
+                                                        <li> Attended client meeting to understand required feature
+                                                            for the
+                                                            project.</li>
+
+                                                        <li> Refactored legacy codes and added new featured to
+                                                            existing
+                                                            application.</li>
+
+                                                        <li>Researched and impemented new feature to improve the
+                                                            overall
+                                                            performance of the application along with scalable and
+                                                            readable
+                                                            code</li>
+
+                                                        <li> Migrated legacy javascript codes to typescript .</li>
+
+                                                        <li> Wrote Unit Test using Jest</li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="xp-item">
+                                        <div class="exp-hide txt-bold">Frontend Developer, UDEXMEDIA (M) SDN.
+                                            BHD(remote work)</div>
+                                        <div class="xp-date">Dec. 2021 - Oct. 2022<div class="xp-city exp-show">
+                                                Malaysia</div>
+                                        </div>
+                                        <div class="xp-job"><span class="exp-show">Frontend Developer,UDEXMEDIA (M)
+                                                SDN. BHD(remote work)</span>
+                                            <div class="xp-detail">
+                                                <div>
+                                                    <ul>
+                                                        <li>Work on Front-end(React.js) of multiple ecommerce sites
+                                                            and
+                                                            Mobile Apps(React Native) consulting with team remotely
+                                                        </li>
+
+                                                        <li>. Integrated software modules with third-party APIs.
+                                                        </li>
+                                                        <li>. Developed mobile-friendly code, as needed, using a
+                                                            combination
+                                                            of HTML / CSS and JavaScript.</li>
+                                                        <li> Ensured that code was thoroughly tested to ensure high
+                                                            quality
+                                                            before deployment .</li>
+                                                        <li> Wrote the unit test using Jest.</li>
+                                                        <li>. Implemented Storybook for the re-usable component to
+                                                            maintain
+                                                            to the redesign system consistent all over the app.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="xp-item">
+                                        <div class="exp-hide txt-bold">Web Developer , Thakuri Creation Pvt.Ltd
+                                            Kathmandu,Nepal</div>
+                                        <div class="xp-date">Jan. 2021 -Nov. 2021<div class="xp-city exp-show">
+                                                kathmandu
+                                            </div>
+                                        </div>
+                                        <div class="xp-job"><span class="exp-show">Web Developer , Thakuri Creation
+                                                PVT. LTD. </span>
+                                            <div class="xp-detail">
+                                                <div>
+                                                    <ul>
+                                                        <li>. Created multiple Web based application using Laravel,
+                                                            React,
+                                                            Html, Css.</li>
+                                                        <li>. Developed a Restful API as required.</li>
+                                                        <li> Conducted project planning for different web-based
+                                                            projects
+                                                            assigned to the company by national and international
+                                                            clients .</li>
+                                                        <li>. Conducted daily and weekly meetings with the team and
+                                                            executive body about the status of projects and their
+                                                            further
+                                                            planning .</li>
+                                                        <li> Communicated progress of projects with respective
+                                                            clients and
+                                                            made recommendations for on-time delivery of the
+                                                            project.</li>
+                                                        <li> Assisted interns in carrying out projects set up as
+                                                            well as guided
+                                                            them in their regular work .</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="xp-item">
+                                        <div class="exp-hide txt-bold">Web Developer-Intern, Six Sigma Inc</div>
+                                        <div class="xp-date">Sept. 2019 - Mar. 2020<div class="xp-city exp-show">
+                                                Malaysia</div>
+                                        </div>
+                                        <div class="xp-job"><span class="exp-show">Web Developer-Intern,Six Sigma
+                                                Inc</span>
+                                            <div class="xp-detail">
+                                                <div>
+                                                    <ul>
+                                                        <li>Worked under the guidance of full stack developer team
+                                                            to understand workflow, customer
+                                                            requirements, time management of Software development
+                                                            life cycle.</li>
+
+                                                        <li>. Developed a dynamic web-application using Laravel
+                                                            framework.</li>
+
+                                                        <li> Ensured that code was thoroughly tested to ensure high
+                                                            quality
+                                                            before deployment .</li>
+                                                        <li>Attend weekly team meeting and demonstrate the progress
+                                                            of ongoing project</li>
+                                                        <li>. Documented projects using system design tools and
+                                                            techniques.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div data-rbd-draggable-context-id="102" data-rbd-draggable-id="EDUC2">
+                            <div class="resume__section resume__education" style="margin-bottom: 0px">
+
+                                <div class="resume__content">
+                                    <div class="sub-headline"><i class="svg-icon"><svg
+                                                xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                                aria-hidden="true" class="iconify icon:fa:graduation-cap"
+                                                data-height="1em" data-icon="fa:graduation-cap" data-inline="false"
+                                                data-width="1em" transform="rotate(360)" viewBox="0 0 2304 1536">
+                                                <path fill="currentColor"
+                                                    d="M1774 708l18 316q4 69-82 128t-235 93.5-323 34.5-323-34.5-235-93.5-82-128l18-316 574 181q22 7 48 7t48-7zm530-324q0 23-22 31L1162 767q-4 1-10 1t-10-1L490 561q-43 34-71 111.5T385 851q63 36 63 109 0 69-58 107l58 433q2 14-8 25-9 11-24 11H224q-15 0-24-11-10-11-8-25l58-433q-58-38-58-107 0-73 65-111 11-207 98-330L22 415q-22-8-22-31t22-31L1142 1q4-1 10-1t10 1l1120 352q22 8 22 31z">
+                                                </path>
+                                            </svg></i>
+                                        <h2>Education</h2>
+                                    </div>
+                                    <div class="xp-item">
+                                        <div class="xp-job edu-hide txt-bold">Tribhuvan University,Nepal </div>
+                                        <div class="xp-date edu-hide">Bachelor of Science, Computer science and
+                                            information technology,2016-2020</div>
+                                        <div class="xp-date edu-show">2016-2020</div>
+                                        <div class="xp-job edu-show"><span class="txt-bold">Bachelor of Science:
+                                                Computer science and information technology</span>
+                                            <div class="xp-detail">
+                                                <ul>
+                                                    <li>Tribhuvan University, Nepal</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    </div>
+    </div>
+    </div>
+
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        function makePDF() {
+
+            var quotes = document.getElementById('container');
+
+            html2canvas(quotes, {
+                onrendered: function (canvas) {
+
+                    //! MAKE YOUR PDF
+                    var pdf = new jsPDF('p', 'pt', 'letter');
+
+                    for (var i = 0; i <= quotes.clientHeight / 980; i++) {
+                        //! This is all just html2canvas stuff
+                        var srcImg = canvas;
+                        var sX = 0;
+                        var sY = 980 * i; // start 980 pixels down for every new page
+                        var sWidth = 900;
+                        var sHeight = 980;
+                        var dX = 0;
+                        var dY = 0;
+                        var dWidth = 900;
+                        var dHeight = 980;
+
+                        window.onePageCanvas = document.createElement("canvas");
+                        onePageCanvas.setAttribute('width', 900);
+                        onePageCanvas.setAttribute('height', 980);
+                        var ctx = onePageCanvas.getContext('2d');
+                        // details on this usage of this function: 
+                        // https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Using_images#Slicing
+                        ctx.drawImage(srcImg, sX, sY, sWidth, sHeight, dX, dY, dWidth, dHeight);
+
+                        // document.body.appendChild(canvas);
+                        var canvasDataURL = onePageCanvas.toDataURL("image/png", 1.0);
+
+                        var width = onePageCanvas.width;
+                        var height = onePageCanvas.clientHeight;
+
+                        //! If we're on anything other than the first page,
+                        // add another page
+                        if (i > 0) {
+                            pdf.addPage(612, 791); //8.5" x 11" in pts (in*72)
+                        }
+                        //! now we declare that we're working on that page
+                        pdf.setPage(i + 1);
+                        //! now we add content to that page!
+                        pdf.addImage(canvasDataURL, 'PNG', 20, 40, (width * .62), (height * .62));
+
+                    }
+                    //! after the for loop is finished running, we save the pdf.
+                    pdf.save('test.pdf');
+                }
+            });
+        }
+        $("#btnPrint").live("click", function () {
+            makePDF()
+
+        });
+
+    </script>
+
+</body>
+
+</html>
